@@ -1,15 +1,18 @@
 @import './../../styles/variables.scss';
+@import './../../styles/mixins.scss';
 
 header{
+    flex-shrink: 0;
     background-color: black;
-    width: 100vw;
     height: 70px;
     display: flex;
     align-items: center;
+    padding-left: $global-left-margin;
+    position: sticky;
+    top: 0;
     img{
         display: flex;
         width: 50px;
-        margin-left: 30px;
         margin-right: 30px;
     }
     nav{
@@ -22,6 +25,7 @@ header{
             text-decoration: none;
             text-decoration-color: transparent;
             transition: $transition;
+            @include titleFont(normal,1.8,#fff);
             &:not(:last-child){
                 margin-right: 20px;
             }
@@ -36,6 +40,10 @@ header{
                 text-decoration: underline;
                 text-underline-offset: 7px;
                 text-decoration-thickness: 2px;
+            }
+
+            @media only screen and (min-width: $screen-sm){
+                @include font-size(2.2);
             }
         }
     }

@@ -21,7 +21,7 @@ function App() {
       <div className="App">
         <Nav/>
 
-        <Switch>
+        {/* <Switch>
           <Route exact path="/rssl">
             <Home />
           </Route>
@@ -31,7 +31,16 @@ function App() {
           <Route exact path="/rssl/standings">
             <Standings />
           </Route>
-        </Switch>
+        </Switch> */}
+          <Route exact path="/rssl">
+            <Home />
+          </Route>
+          <Route exact path="/rssl/teams">
+            <Teams />
+          </Route>
+          <Route exact path="/rssl/standings">
+            <Standings />
+          </Route>
 
         <Footer />
       </div>

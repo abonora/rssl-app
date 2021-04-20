@@ -1,0 +1,22 @@
+@import './variables.scss';
+
+@mixin font-size($sizeValue: 1.6){
+    font-size: ($sizeValue * 10) + px;
+    font-size: $sizeValue + rem;
+}
+
+@mixin fontStyles($weight, $size, $color, $fontFam:inherit, $letterSpacing:null) {
+    font-weight: $weight;
+    @include font-size($size);
+    color: $color;
+    letter-spacing: $letterSpacing;
+    font-family: $fontFam;
+}
+
+@mixin titleFont ($weight, $size, $color){
+    @include fontStyles($weight, $size, $color, $titlefont);
+}
+
+@mixin defaultFont ($weight, $size, $color){
+    @include fontStyles($weight, $size, $color, $defaultfont);
+}
