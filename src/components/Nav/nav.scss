@@ -4,6 +4,14 @@ header{
     background-color: black;
     width: 100vw;
     height: 70px;
+    display: flex;
+    align-items: center;
+    img{
+        display: flex;
+        width: 50px;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
     nav{
         height: 100%;
         display: flex;

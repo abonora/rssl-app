@@ -13,6 +13,7 @@ import {
 function Nav() {
   return (
     <header>
+        <img src="/rssl/rssl-logo.png" alt="RSSL Fantasy Hockey Manager" title="RSSL Fantasy Hockey Manager" />
         <nav>
             <NavLink exact to="/rssl" activeClassName="active">Home</NavLink>
             <NavLink exact to="/rssl/teams" activeClassName="active">Teams</NavLink>
