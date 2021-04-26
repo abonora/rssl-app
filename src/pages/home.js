@@ -44,7 +44,7 @@ class Home extends Component{
     }
     render(){
         return (
-            <main>
+            <main id="home">
                     {
                         this.state.error &&
                         <div>
@@ -57,7 +57,7 @@ class Home extends Component{
                     }
                     {
                         !this.state.error && this.state.isLoaded &&
-                        <div>
+                        <div className="wrapper">
                             <h1>{this.state.homeData.title}</h1>
                             <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(this.state.homeData.content)}}></div>
                         </div>

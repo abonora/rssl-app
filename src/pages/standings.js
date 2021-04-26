@@ -3,8 +3,11 @@ import React, { Component } from 'react';
 class Standings extends Component{
     render(){
         return (
-            <main>
-                <h1>This is the Standings page!</h1>
+            <main id="stadings">
+                <h1>{this.props.title}</h1>
+                <div className="wrapper">
+                    <img src="/rssl/teams/anaheim-ducks.svg" />
+                </div>
             </main>
         )
     }
