@@ -6,7 +6,8 @@ import {
     Route,
     Link,
     useParams,
-    useRouteMatch
+    useRouteMatch,
+    NavLink
   } from "react-router-dom";
 import Loading from './../components/Loading/loading';
 import './../styles/teams.scss';
@@ -65,13 +66,13 @@ class Teams extends Component{
                     <ul>
                     {this.state.teams.map((team, index) => (
                       <li key={index}>
-                        <Link to={`teams/${team.id}/${team.slug}`}>
+                        <NavLink to={`teams/${team.id}/${team.slug}`}>
                           <div className="imgWrapper">
                             <img src={`/rssl/team-logos/${team.slug}.png`}/>
                           </div>
                           <h3 dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(team.title.rendered)}}></h3>
                           <h5>GM: {team.meta_box.owner}</h5>
-                        </Link>
+                        </NavLink>
                       </li>
                     ))}
                     </ul>
