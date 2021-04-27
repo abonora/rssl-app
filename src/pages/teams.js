@@ -67,7 +67,7 @@ class Teams extends Component{
                       <li key={index}>
                         <Link to={`teams/${team.id}/${team.slug}`}>
                           <div className="imgWrapper">
-                            <img src={team.meta_box.teamLogo[0].full_url} />
+                            <img src={`/rssl/team-logos/${team.slug}.png`}/>
                           </div>
                           <h3 dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(team.title.rendered)}}></h3>
                           <h5>GM: {team.meta_box.owner}</h5>
