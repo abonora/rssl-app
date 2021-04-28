@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Link, BrowserRouter as Router, Route, Switch, NavLink } from "react-router-dom";
+import React, { Component, useEffect } from 'react';
 import Loading from './../Loading/loading';
+import DOMPurify from 'dompurify';
 
 // All Teams: https://albertobonora.com/feeds/wp-json/wp/v2/teams/
 // Individual Team: https://albertobonora.com/feeds/wp-json/wp/v2/teams/288
@@ -14,6 +14,7 @@ class Team extends Component{
         this.state = {
             error: null,
             isLoaded: false,
+            keepers: [],
             teamData: {
                 name: null,
                 slug: null,
@@ -39,7 +40,7 @@ class Team extends Component{
             (result) => {
                 console.log(result);
                 this.setState({
-                    isLoaded: true,
+                    //isLoaded: true,
                     //items: result
                     teamData: {
                         name: result.title.rendered,
@@ -55,6 +56,18 @@ class Team extends Component{
                         keeper3id: result.meta_box.players_to_teams_from[2],
                         keeper4id: result.meta_box.players_to_teams_from[3]
                     }
+                },() =>{
+                    fetch("https://albertobonora.com/feeds/wp-json/wp/v2/players?include="+this.state.teamData.keeper1id+","+this.state.teamData.keeper2id+","+this.state.teamData.keeper3id+","+this.state.teamData.keeper4id)
+                    .then(res => res.json())
+                    .then(
+                        (result) => {
+                            console.log(result);
+                            this.setState({
+                                isLoaded: true,
+                                keepers: result
+                            });
+                        }
+                    )
                 });
             },
             (error) => {
@@ -65,6 +78,7 @@ class Team extends Component{
             }
         )
     }
+
     render(){
         return (
             
@@ -81,19 +95,25 @@ class Team extends Component{
                 }
                 {
                     !this.state.error && this.state.isLoaded &&
-                    <div>
-                        Team Slug: {this.props.teamName}<br />
-                        Team ID: {this.props.teamID}<br />
-                        Team GM/Owner: {this.state.teamData.teamGM}<br />
-                        Team Name Full: {this.state.teamData.name}<br />
-                        Team Logo: {this.state.teamData.teamLogo}<br />
-                        Team Color 1: {this.state.teamData.primaryColour}<br />
-                        Team Color 2: {this.state.teamData.secondaryColour}<br />
-                        Team Color 3: {this.state.teamData.altColour}<br />
-                        Keeper ID 1: {this.state.teamData.keeper1id}<br />
-                        Keeper ID 2: {this.state.teamData.keeper2id}<br />
-                        Keeper ID 3: {this.state.teamData.keeper3id}<br />
-                        Keeper ID 4: {this.state.teamData.keeper4id}<br />
+                    <div className="team-wrapper">
+                        <div className="imgWrapper">
+                            <img src={`/rssl/team-logos/${this.props.teamName}.png`}/>
+                        </div>
+                        <h3 dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(this.state.teamData.name)}}></h3>
+                        <h5>GM: {this.state.teamData.teamGM}</h5>
+
+                        <div className="player-wrapper">
+                            <ul>
+                                {this.state.keepers.map((keeper, index) => (
+                                <li key={index}>
+                                    Name: {keeper.title.rendered} <br />
+                                    Team: {keeper.meta_box.nhlTeam} <br />
+                                    Photo: {keeper.meta_box.playerPhoto[0].full_url} <br />
+                                    Contract: {keeper.meta_box.contractLength} 
+                                </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
                 }
             </div>

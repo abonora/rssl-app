@@ -1,0 +1,76 @@
+@import './mixins.scss';
+@import './variables.scss';
+#team{
+    .back-to-teams{
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        margin-bottom: 15px;
+        transition: $transition;
+
+        svg path{
+            transition: $transition;
+        }
+        span{
+            transition: $transition;
+            margin-left: 10px;
+            @include titleFont(bold,2,#000);
+        }
+
+        &:hover{
+            svg{
+                path{
+                    fill: #535353;
+                }
+            }
+            span{
+                color: #535353;
+            }
+        }
+    }
+    .team-wrapper{
+        text-align: center;
+        h3{
+            @include titleFont(bold,2,#000);
+            transition: $transition;
+        }
+        h5{
+            @include defaultFont(normal,1.5,rgb(99, 99, 99));
+            transition: $transition;
+            margin-bottom: 20px;
+        }
+        img{
+            width: 110%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            transition: $transition;
+        }
+        .imgWrapper{
+            border-radius: 50%;
+            border: solid 6px #000;
+            overflow: hidden;
+            box-sizing: border-box;
+            width: 180px;
+            height: 180px;
+            position: relative;
+            margin: 0 auto 10px;
+            transition: $transition;
+        }
+    }
+    .player-wrapper{
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        ul{
+            display: inherit;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            li{
+                border: solid 2px black;
+            }
+        }
+    }
+}
