@@ -29,13 +29,13 @@
         }
     }
     .team-wrapper{
-        text-align: center;
+        //text-align: center;
         h3{
-            @include titleFont(bold,2,#000);
+            @include titleFont(bold,2.2,#000);
             transition: $transition;
         }
         h5{
-            @include defaultFont(normal,1.5,rgb(99, 99, 99));
+            @include defaultFont(normal,1.8,rgb(99, 99, 99));
             transition: $transition;
             margin-bottom: 20px;
         }
@@ -58,19 +58,88 @@
             margin: 0 auto 10px;
             transition: $transition;
         }
+        .team-img{
+            margin: 0 15px 0 0;
+            min-width: 180px;
+        }
+        .team-info{
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
     }
     .player-wrapper{
         display: flex;
         flex-wrap: nowrap;
         overflow-x: scroll;
+        position: relative;
+        border-top: solid 30px rgb(63, 63, 63);
+        outline: 2px solid rgb(63, 63, 63);
+        text-align: center;
+        &::-webkit-scrollbar {
+            width: 4px;
+          }
+            
+          &::-webkit-scrollbar-track {
+            margin-right: 20px;
+            margin-left: 20px;
+          }
+          &::-webkit-scrollbar-thumb {
+            background-color: darkgrey ;
+            border-radius: 10px;
+          }
         ul{
             display: inherit;
             list-style: none;
-            margin: 0;
+            margin: 15px 0 0 0;
             padding: 0;
+            width: 100%;
             li{
-                border: solid 2px black;
+                flex: 1 1 0px;
+                min-width: 165px;
             }
+        }
+        .img-wrapper{
+            display: flex;
+            align-items: center;
+            position: relative;
+            img{
+                width: 100%;
+            }
+            .player-img{
+                width: 140px;
+                height: 140px;
+                border-width: 3px;
+            }
+            .nhl-team-img{
+                width: 50px;
+                height: 50px;
+                border-width: 3px;
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(50%);
+                background-color: white;
+                img{
+                    width: 70%;
+                }
+            }
+        }
+        .player-name{
+            @include titleFont(bold,2,#000);
+            margin-bottom: 4px;
+        }
+        .player-team{
+            @include defaultFont(normal,1.5, rgb(70, 70, 70));
+            text-transform: capitalize;
+            margin-bottom: 8px;
+        }
+        .player-contract{
+            @include defaultFont(bold, 1.35, rgb(114, 114, 114));
+            text-transform: capitalize;
+        }
+        .lastyear{
+            color: red;
         }
     }
 }

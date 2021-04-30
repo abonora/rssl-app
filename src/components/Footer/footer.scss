@@ -14,16 +14,8 @@ footer{
             margin: 0;
             padding: 0;
             text-align: left;
-            @include font-size(0.6);
+            @include font-size(1.1);
             line-height: 15px;
-
-            @media only screen and (min-width: $screen-sm){
-                @include font-size(0.8);
-            }
-
-            @media only screen and (min-width: $screen-md){
-                @include font-size(1.1);
-            }
         }
     }
 }

@@ -79,6 +79,18 @@ class Team extends Component{
         )
     }
 
+    transformText = (value) => {
+        return value.split("-").join(" ");
+    }
+
+    contractText = (value) =>{
+        if(value != "forever"){
+            return "Year "+value;
+        }else{
+            return value;
+        }
+    }
+
     render(){
         return (
             
@@ -95,21 +107,32 @@ class Team extends Component{
                 }
                 {
                     !this.state.error && this.state.isLoaded &&
-                    <div className="team-wrapper">
-                        <div className="imgWrapper">
-                            <img src={`/rssl/team-logos/${this.props.teamName}.png`}/>
+                    <div className="wrapper team-wrapper">
+                        <div className="team-info">
+                            <div className="imgWrapper team-img">
+                                <img src={`/rssl/team-logos/${this.props.teamName}.png`}/>
+                            </div>
+                            <div>
+                                <h3 dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(this.state.teamData.name)}}></h3>
+                                <h5>GM: {this.state.teamData.teamGM}</h5>
+                            </div>
                         </div>
-                        <h3 dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(this.state.teamData.name)}}></h3>
-                        <h5>GM: {this.state.teamData.teamGM}</h5>
 
                         <div className="player-wrapper">
                             <ul>
                                 {this.state.keepers.map((keeper, index) => (
                                 <li key={index}>
-                                    Name: {keeper.title.rendered} <br />
-                                    Team: {keeper.meta_box.nhlTeam} <br />
-                                    Photo: {keeper.meta_box.playerPhoto[0].full_url} <br />
-                                    Contract: {keeper.meta_box.contractLength} 
+                                    <div className="img-wrapper">
+                                        <div className="player-img imgWrapper">
+                                            <img src={keeper.meta_box.playerPhoto[0].full_url} />
+                                        </div>
+                                        <div className="nhl-team-img imgWrapper">
+                                            <img src={'/rssl/teams/'+keeper.meta_box.nhlTeam+'.svg'} />
+                                        </div>
+                                    </div>
+                                    <p className="player-name">{keeper.title.rendered}</p>
+                                    <p className="player-team">{this.transformText(keeper.meta_box.nhlTeam)}</p>
+                                    <p className={"player-contract"+ (keeper.meta_box.contractLength === '3' ? ' lastyear' : '')}>{this.contractText(keeper.meta_box.contractLength)} </p>
                                 </li>
                                 ))}
                             </ul>
