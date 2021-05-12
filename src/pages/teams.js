@@ -49,7 +49,6 @@ class Teams extends Component{
     return (
         <main id="teams">
             <h1>{this.props.title}</h1>
-            <p>In here we need to call the ALL TEAMS feed and store the post id, teamname, GM, colours for the jersey</p>
             {
                 this.state.error &&
                 <div>
