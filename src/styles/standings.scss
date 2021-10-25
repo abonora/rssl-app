@@ -1,0 +1,69 @@
+@import './mixins.scss';
+@import './variables.scss';
+#standings{
+    .standings-top{
+        border-bottom: solid 3px $rssl-dark-grey;
+        display: flex;
+        align-items: center;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        h1{
+            margin: 0;
+        }
+        .dropdownWrapper{
+            margin-left: 10px;
+            position: relative;
+        }
+        .selectedSeason{
+            border: solid 2px $rssl-dark-grey;
+            padding: 15px;
+            @include defaultFont(bold,2,#000);
+            cursor: pointer;
+            svg{
+                margin-left: 10px;
+                transition: $transition;
+            }
+            &--open{
+                svg{
+                    transform: rotate(180deg);
+                }
+            }
+        }
+        ul{
+            
+        }
+
+        .seasonDropdown{
+            overflow: hidden;
+            transform: scaleY(0);
+            opacity: 0;
+            transform-origin: top;
+            margin: -2px 0 0 0;
+            padding: 0;
+            position: absolute;
+            transition: $transition;
+            background-color: white;
+            width: 100%;
+            list-style: none;
+            border: solid 2px $rssl-dark-grey;
+            box-sizing: border-box;
+            z-index: 1;
+            li{
+                transition: $transition;
+                margin: 0;
+                padding: 6px 0 6px 15px;
+                @include defaultFont(bold,1.5,#000);
+                background-color: transparent;
+                &:hover{
+                    color: $rssl-blue;
+                    cursor: pointer;
+                    background-color: $rssl-light-grey;
+                }
+            }
+            &--open{
+                transform: scaleY(1);
+                opacity: 1;
+            }
+        }
+    }
+}

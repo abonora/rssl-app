@@ -8,6 +8,7 @@ html{
 html,body{
   width: 100%;
   height: 100%;
+  background-color: $rssl-light-grey;
 }
 body,
 h1,
@@ -27,7 +28,7 @@ section{
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  @include defaultFont(normal,1.5,#000);
+  @include defaultFont(normal,1.5,$rssl-eerie-black);
 
   main{
     flex-grow: 1;
@@ -39,16 +40,16 @@ section{
     h1{
       margin-bottom: 30px;
       text-align: center;
-      @include titleFont(bold,3,#000);
+      @include titleFont(bold,3,$rssl-eerie-black);
 
       @media screen and (min-width: $screen-md){
         text-align: left;
-        @include titleFont(bold,5,#000);
+        @include titleFont(bold,5,$rssl-eerie-black);
       }
     }
 
     h4{
-      @include titleFont(bold,2,#000);
+      @include titleFont(bold,2,$rssl-eerie-black);
       margin-bottom: 20px;
     }
 

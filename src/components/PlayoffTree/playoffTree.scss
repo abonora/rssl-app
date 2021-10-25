@@ -1,0 +1,18 @@
+@import './../../styles/variables.scss';
+@import './../../styles/mixins.scss';
+
+.playoff-tree{
+    display: flex;
+    overflow-x: auto;
+    box-sizing: border-box;
+    border: solid 2px black;
+    margin-top: 100px;
+
+    .team{
+        text-decoration: line-through;
+    }
+    .winner{
+        text-decoration: none;
+        font-weight: bold;
+    }
+}

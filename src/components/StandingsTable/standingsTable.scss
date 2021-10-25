@@ -1,0 +1,72 @@
+@import './../../styles/variables.scss';
+@import './../../styles/mixins.scss';
+
+.standings-table{
+    display: flex;
+    overflow-x: auto;
+    box-sizing: border-box;
+    border: solid 2px black;
+    
+    ul{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        li{
+            display: flex;
+            height: 70px;
+            align-items: center;
+            border-bottom: solid 1px $rssl-dark-grey;
+            p{
+                margin: 0;
+            }
+            img{
+                border-radius: 50%;
+                width: 50px;
+                margin: 0 5px;
+            }
+        }
+    }
+    .row{
+        background-color: black;
+        color: white;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        p{
+            margin: 0;
+        }
+        ul li{
+            border: none;
+        }
+    }
+    &-col{
+        
+    }
+    .first{
+        flex: 1 0 200px;
+        max-width: 300px;
+        background: white;
+        position: sticky;
+        left: 0;
+        border-right: solid 1px $rssl-light-grey;
+        li{
+            align-items: center;
+            p{
+                margin: 0;
+                padding:0 5px;
+                @include titleFont(bold,1.5,#000);
+            }
+        }
+    }
+    .second{
+        flex: 1 0 auto;
+        box-sizing: border-box;
+        overflow: auto;
+        ul li{
+            p{
+                width: 50px;
+                text-align: center;
+            }
+        }
+    }
+}

@@ -22,7 +22,7 @@
                 text-decoration: none;
                 color: #000;
                 h3{
-                    @include titleFont(bold,2,#000);
+                    @include titleFont(bold,2,$rssl-jet-black);
                     transition: $transition;
                 }
                 h5{
@@ -39,7 +39,7 @@
                 }
                 .imgWrapper{
                     border-radius: 50%;
-                    border: solid 6px #000;
+                    border: solid 6px $rssl-jet-black;
                     overflow: hidden;
                     box-sizing: border-box;
                     width: 135px;

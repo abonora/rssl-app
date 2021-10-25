@@ -10,11 +10,12 @@
 
         svg path{
             transition: $transition;
+            fill: $rssl-jet-black;
         }
         span{
             transition: $transition;
             margin-left: 10px;
-            @include titleFont(bold,2,#000);
+            @include titleFont(bold,2,$rssl-jet-black);
         }
 
         &:hover{
@@ -31,7 +32,7 @@
     .team-wrapper{
         //text-align: center;
         h3{
-            @include titleFont(bold,2.2,#000);
+            @include titleFont(bold,2.2,$rssl-jet-black);
             transition: $transition;
         }
         h5{
@@ -49,7 +50,7 @@
         }
         .imgWrapper{
             border-radius: 50%;
-            border: solid 6px #000;
+            border: solid 6px $rssl-jet-black;
             overflow: hidden;
             box-sizing: border-box;
             width: 180px;
@@ -126,7 +127,7 @@
             }
         }
         .player-name{
-            @include titleFont(bold,2,#000);
+            @include titleFont(bold,2,$rssl-eerie-black);
             margin-bottom: 4px;
         }
         .player-team{

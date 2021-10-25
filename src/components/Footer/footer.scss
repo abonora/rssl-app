@@ -6,7 +6,7 @@ footer{
     display: flex;
     align-items: center;
     height: 90px;
-    background-color: $rssl-light-grey;
+    background-color: $rssl-dark-grey;
     padding-left: $global-left-margin;
     padding-right: $global-left-margin;
     .footer-inner{
@@ -15,6 +15,7 @@ footer{
             padding: 0;
             text-align: left;
             @include font-size(1.1);
+            color: $rssl-alabaster;
             line-height: 15px;
         }
     }
